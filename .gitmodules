@@ -1,0 +1,3 @@
+[submodule "yocto_tutorials/poky"]
+	path = yocto_tutorials/poky
+	url = git@github.com:pranaytummalapalli/yocto_tutor.git
