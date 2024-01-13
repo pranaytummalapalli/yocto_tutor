@@ -49,4 +49,34 @@ Poky (pronounced Pock-ee. also, named after the poky stick snacks), is a referen
 
 Poky is a starting point to build your custom embedded distribution and serves as a reference template.
 
-### 
+### BitBake
+
+BitBake is a generic task execution engine that allows shell and Python tasks to be run efficiently and in parallel while working within complex inter-task dependency constraints. One of BitBake’s main users, OpenEmbedded, takes this core and builds embedded Linux software stacks using a task-oriented approach.
+
+Conceptually, BitBake is similar to GNU Make in some regards but has significant differences:
+
+BitBake executes tasks according to the provided metadata that builds up the tasks. Metadata is stored in recipe (.bb) and related recipe “append” (.bbappend) files, configuration (.conf) and underlying include (.inc) files, and in class (.bbclass) files. The metadata provides BitBake with instructions on what tasks to run and the dependencies between those tasks.
+
+BitBake includes a fetcher library for obtaining source code from various places such as local files, source control systems, or websites.
+
+The instructions for each unit to be built (e.g. a piece of software) are known as [“recipe”](### Recipes) files and contain all the information about the unit (dependencies, source file locations, checksums, description and so on).
+
+BitBake includes a client/server abstraction and can be used from a command line or used as a service over XML-RPC and has several different user interfaces.
+
+### Layers
+
+Layers are repositories that contain related sets of instructions that tell the OpenEmbedded Build System what to do. You can collaborate, share, and reuse layers.
+
+Layers can contain changes to previous instructions or settings at any time. This powerful override capability is what allows you to customize previously supplied collaborative or community layers to suit your product requirements.
+
+You use different layers to logically separate information in your build. As an example, you could have BSP, GUI, distro configuration, middleware, or application layers. Putting your entire build into one layer limits and complicates future customization and reuse. Isolating information into layers, on the other hand, helps simplify future customizations and reuse. You might find it tempting to keep everything in one layer when working on a single project. However, the more modular your Metadata, the easier it is to cope with future changes.
+
+### Recipes
+
+A set of instructions for building packages. A recipe describes where you get source code, which patches to apply, how to configure the source, how to compile it and so on. Recipes also describe dependencies for libraries or for other recipes. Recipes represent the logical unit of execution, the software to build, the images to build, and use the .bb file extension.
+
+### Source Directory
+
+The Source Directory contains BitBake, Documentation, Metadata and other files that all support the Yocto Project. Consequently, you must have the Source Directory in place on your development system in order to do any development using the Yocto Project.
+
+
