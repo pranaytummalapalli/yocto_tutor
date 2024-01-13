@@ -59,7 +59,7 @@ BitBake executes tasks according to the provided metadata that builds up the tas
 
 BitBake includes a fetcher library for obtaining source code from various places such as local files, source control systems, or websites.
 
-The instructions for each unit to be built (e.g. a piece of software) are known as [“recipe”](### Recipes) files and contain all the information about the unit (dependencies, source file locations, checksums, description and so on).
+The instructions for each unit to be built (e.g. a piece of software) are known as [“recipe”](#Recipes) files and contain all the information about the unit (dependencies, source file locations, checksums, description and so on).
 
 BitBake includes a client/server abstraction and can be used from a command line or used as a service over XML-RPC and has several different user interfaces.
 
