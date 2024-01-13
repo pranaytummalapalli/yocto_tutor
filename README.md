@@ -115,40 +115,15 @@ Then right click the appimage and go to properties. There under the permissions 
 
 Alternatively, etcher can also be installed from commandline.
 
-1. **Add debian repository for etcher:**
+For instructions check [here.](https://phoenixnap.com/kb/etcher-ubuntu).
 
-    Add Etcher’s repository to the list of repositories from which Ubuntu retrieves application files. In the console, type the following command:
+#### 2. Picocom
 
-    ```bash
-    echo "deb https://deb.etcher.io stable etcher" | sudo tee /etc/apt/sources.list.d balena-etcher.list
-    ```
+To install picocom, run the follwoing command in the shell:
 
-2. **Add the repository key to authenticate the package source**
-
-    Next, use apt-key to add Etcher’s repository key to the trusted list. To do this, type the following:
-
-    ```bash
-    sudo apt-key adv --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 379CE192D401AB61
-    ```
-
-3. **Install etcher**
-
-    Now you can proceed with installing Etcher using apt.
-
-    1. First, update the package list:
-
-        ```bash
-        sudo apt update
-        ```
-    2. Next, install the package:
-
-        ```bash
-        sudo apt install balena-etcher-electron
-        ```
-
-    3. When prompted, type **y** and press **Enter**.
-
-    4. Wait for the installation to finish and run Etcher by finding it in the list of your Ubuntu applications. Alternatively, start it by typing **balena-etcher-electron** in the command line.
+```bash
+sudo apt-get install picocom
+```
 
 ### Build Packages Required By Host
 
@@ -271,4 +246,17 @@ File name:
 ```console
 core-image-full-cmdline-beaglebone-yocto.wic
 ```
+
+Open Balena Etcher and use it to flash the sd card with the image. Connect the FTDI cable as explained [here](#FTDI-Host-Communication).
+
+Insert the SD card into the BBB board. Before turning on the power to the board, run the picocom with the following command:
+
+```bash
+sudo picocom -b 115200 /dev/ttyUSB0
+```
+
+This way, you will be able to monitor the boot process from the very beginning. Once you get the **terminal ready** output, hold the S2 push button on the board near the SD Card. insert the power cord and monitor the terminal and the boot leds.
+
+
+
 
