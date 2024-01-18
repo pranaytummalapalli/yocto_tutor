@@ -100,6 +100,10 @@ The local.conf file is a configuration file where all local configurations and u
 
 ### Images
 
+## BeagleBone Black with Yocto Project
+
+### FTDI Host Communication
+
 ## Getting Started (Quick Build)
 
 This documentation follows aspects from the [Official Yocto Documentation](https://docs.yoctoproject.org/index.html) as well as [Yocto Tutorials Series](https://www.youtube.com/playlist?list=PLwqS94HTEwpQmgL1UsSwNk_2tQdzq3eVJ) by Tech-A-Byte. I have mostly referred to Tech-A-Byte's playlist for the quick build and basic concepts section but also referred to the official documentation where required (which i shall mention where used).
@@ -255,8 +259,10 @@ Insert the SD card into the BBB board. Before turning on the power to the board,
 sudo picocom -b 115200 /dev/ttyUSB0
 ```
 
-This way, you will be able to monitor the boot process from the very beginning. Once you get the **terminal ready** output, hold the S2 push button on the board near the SD Card. insert the power cord and monitor the terminal and the boot leds.
+This way, you will be able to monitor the boot process from the very beginning. Once you get the **terminal ready** output, hold the S2 push button on the board near the SD Card. Insert the power cord and monitor the terminal and the boot leds. 
 
+If the image is flashed correctly, you should see the boot process on the picocom terminal. If not, reflash the image and unmount the card correctly
 
+The userID of the BBB is **root** and the password is empty so you can press **ENTER**.
 
 
