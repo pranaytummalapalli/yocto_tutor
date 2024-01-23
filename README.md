@@ -1,3 +1,11 @@
+# Contents Quick Guide
+
+1. [Pre-requisities](#Pre-requisites)
+2. [Basics and concepts](#Basics-and-Concepts)
+3. [Beaglebone black with Yocto Project]()
+4. Getting Started
+
+
 # Yocto Fundamentals
 
 "It’s not an embedded Linux distribution,
@@ -91,18 +99,48 @@ NOTE: This is practically the same as the poky directory in your filesystem.
 
 ### bblayers.conf
 
+The first thing BitBake does is parse base configuration metadata. Base configuration metadata consists of your project’s bblayers.conf file to determine what layers BitBake needs to recognize, all necessary layer.conf files (one from each layer), and bitbake.conf.
+
 ### local.conf
 
 The local.conf file is a configuration file where all local configurations and user settings are stored. This also stores information about the target build system like architecture settings etc.
 
-- MACHINE variable:
-- 
+- **DISTRO variable**: DISTRO corresponds to a distribution configuration file whose root name is the same as the variable's value and whose extension is .conf. For example, by default the DITRO variable has a value "poky".
 
-### Images
+```c
+DISTRO = "poky"
+```
+- M**ACHINE variable**: Specifies the target device for which the image is built. By default, MACHINE is set to “qemux86”, which is an x86-based architecture machine to be emulated using QEMU
+
+- **SOURCES variable:** This variable contains the path to your sources directory so that all base paths can be defined from here for other variables.
+
+- **DL_DIR variable:** The central download directory used by the build process to store downloads. By default, DL_DIR gets files suitable for mirroring for everything except Git repositories.
+
+```bash
+NOTE
+
+When wiping and rebuilding, you can preserve this directory to speed up this part of subsequent builds.
+```
+
+- **SSTATE_DIR variable:** The directory for the shared state cache.
+
+- **TMPDIR variable:** This variable is the base directory the OpenEmbedded build system uses for all build output and intermediate files (other than the shared state cache). By default, the TMPDIR variable points to tmp within the Build Directory.
+
+For more a full list of varibale definitions, see the yocto variables [glossary.](https://docs.yoctoproject.org/ref-manual/variables.html#)
+
+- **CONF_VERSION variable**: Tracks the version of the local configuration file (i.e. local.conf). The value for CONF_VERSION increments each time build/conf/ compatibility changes.
+
+- **RM_OLD_IMAGE variable:** Reclaims disk space by removing previously built versions of the same image from the images directory pointed to by the DEPLOY_DIR variable.
+
+    Set this variable to "1" in your local.conf file to remove these images.
+
+- **INHERIT varibale**: Causes the named class to be inherited at this point during parsing. The variable is only valid in configuration files.
 
 ## BeagleBone Black with Yocto Project
 
 ### FTDI Host Communication
+
+To communicate to the Beaglebone Black via serial terminal, we need to connect it to the host PC using an FTDI cable. The connections to the beaglebone black can be found on this [link.](https://dave.cheney.net/2013/09/22/two-point-five-ways-to-access-the-serial-console-on-your-beaglebone-black)
 
 ## Getting Started (Quick Build)
 
